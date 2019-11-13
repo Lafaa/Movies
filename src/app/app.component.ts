@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { DataBaseService } from './services/data-base.service';
+import { GenreType } from './model/genreType.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'Movies';
+
+  constructor(private dataBase: DataBaseService) {
+    console.log(dataBase.listAllMovies());
+  }
+
 }
