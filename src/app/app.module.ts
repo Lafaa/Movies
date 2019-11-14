@@ -9,6 +9,8 @@ import { MoviesListComponent } from './components/movies-list/movies-list.compon
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { SeeAllMoviesComponent } from './components/see-all-movies/see-all-movies.component';
+import { BackButtonComponent } from './components/back-button/back-button.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     MoviesListComponent,
     MovieDetailsComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    SeeAllMoviesComponent,
+    BackButtonComponent
   ],
   imports: [
     BrowserModule,

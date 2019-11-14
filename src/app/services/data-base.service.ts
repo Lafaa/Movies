@@ -11,6 +11,31 @@ export class DataBaseService {
   constructor() {
   }
 
+  getSimiliarMovies(id: number): any {
+    const genres = Movies.filter(x => x.id === id)[0].genres;
+    const scores = [];
+    Movies.forEach(m => {
+      if (m.id === id) {
+        return;
+      }
+      scores[m.id] = {
+        id: m.id,
+        img: m.img,
+        name: m.name,
+        score: 0
+      };
+      m.genres.forEach(g => {
+        if (genres.includes(g)) {
+          scores[m.id].score++;
+        }
+      });
+    });
+    scores.sort((a, b) => {
+      return a.score < b.score ? 1 : -1;
+    });
+    return scores.filter(m => m.score > 0).slice(0, 3);
+  }
+
   getAllMovies() {
     return Movies;
   }
@@ -36,7 +61,7 @@ export class DataBaseService {
   }
 
   getMovieDetails(id: number) {
-    return Movies.filter(x => x.id === id);
+    return Movies.filter(x => x.id === id)[0];
   }
 
 }

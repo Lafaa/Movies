@@ -11,7 +11,17 @@ export class HomeComponent implements OnInit {
   mostAppreciated: Thumbnail[] = [];
 
   constructor(private dataBase: DataBaseService) {
-    this.mostAppreciated = dataBase.getBestRated(3);
+    switch (true) {
+      case window.innerWidth >= 1200:
+        this.mostAppreciated = dataBase.getBestRated(4);
+        break;
+      case window.innerWidth > 991:
+        this.mostAppreciated = dataBase.getBestRated(3);
+        break;
+      default:
+        this.mostAppreciated = dataBase.getBestRated(2);
+    }
+
   }
 
   ngOnInit() {

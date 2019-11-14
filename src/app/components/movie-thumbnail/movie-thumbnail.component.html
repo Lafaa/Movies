@@ -1,1 +1,4 @@
-<p>movie-thumbnail works!</p>
+<div class="thumbnail" [routerLink]="['/movie', movie.id]">
+    <img src="../../../assets/images/movie-covers/{{movie.img}}" alt="{{movie.name}} cover">
+    <p>{{movie.name}}</p>
+</div>
