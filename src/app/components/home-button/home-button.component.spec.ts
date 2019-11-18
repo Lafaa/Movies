@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MovieThumbnailComponent } from './movie-thumbnail.component';
+import { HomeButtonComponent } from './home-button.component';
+import { MovieThumbnailComponent } from '../movie-thumbnail/movie-thumbnail.component';
 import { MoviesListComponent } from '../movies-list/movies-list.component';
 import { NotFoundComponent } from '../not-found/not-found.component';
 import { SeeAllMoviesComponent } from '../see-all-movies/see-all-movies.component';
@@ -8,13 +9,12 @@ import { AppComponent } from 'src/app/app.component';
 import { MovieDetailsComponent } from '../movie-details/movie-details.component';
 import { HomeComponent } from '../home/home.component';
 import { BackButtonComponent } from '../back-button/back-button.component';
-import { HomeButtonComponent } from '../home-button/home-button.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule } from '@angular/forms';
 
-describe('MovieThumbnailComponent', () => {
-  let component: MovieThumbnailComponent;
-  let fixture: ComponentFixture<MovieThumbnailComponent>;
+describe('HomeButtonComponent', () => {
+  let component: HomeButtonComponent;
+  let fixture: ComponentFixture<HomeButtonComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -31,11 +31,11 @@ describe('MovieThumbnailComponent', () => {
       ],
       imports: [ RouterTestingModule, FormsModule  ]
     })
-      .compileComponents();
+    .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MovieThumbnailComponent);
+    fixture = TestBed.createComponent(HomeButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -10,7 +10,6 @@ import { GenreType } from './model/genreType.model';
 export class AppComponent {
 
   constructor(private dataBase: DataBaseService) {
-    console.log(dataBase.listAllMovies());
   }
 
 }

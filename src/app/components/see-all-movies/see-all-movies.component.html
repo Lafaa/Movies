@@ -1,1 +1,52 @@
+<app-home-button></app-home-button>
+<app-back-button></app-back-button>
+<form class="form-inline">
+    <div class="form-group">
+        <label>Title</label>
+        <input type="text" class="form-control" name="searchInput" placeholder="Search for a Title"
+            [ngModel]="searchInput" (ngModelChange)='changedSearchText($event)'>
+    </div>
+    <div class="form-group">
+        <label>Genre</label>
+        <select name="selectedGenre" class="form-control" [ngModel]="selectedGenre"
+            (ngModelChange)='changedGenre($event)'>
+            <option value="{{genre.value}}" *ngFor="let genre of GenreType | keyvalue">{{genre.key}}</option>
+            <option value="">All</option>
+        </select>
+    </div>
+</form>
+<!-- <form class="form-inline">
+    <div class="form-group">
+        <label>Sort By</label>
+        <select name="selectedSort" class="form-control" [ngModel]="selectedSort" (ngModelChange)='changeSort($event)'>
+            <option value="rate">Rate</option>
+            <option value="name">Name</option>
+            <option value="length">Length</option>
+        </select>
+
+    </div>
+    <div class="form-group">
+        <label>Results per Page</label>
+        <select name="selectPerPage" class="form-control" [ngModel]="selectPerPage"
+            (ngModelChange)='changedPerPage($event)'>
+            <option value="4">4</option>
+            <option value="8">8</option>
+            <option value="12">12</option>
+        </select>
+    </div>
+</form> -->
 <app-movies-list [moviesToShow]="moviesToShow"></app-movies-list>
+<nav aria-label="Page navigation example" *ngIf="showPages">
+    <ul class="pagination justify-content-center">
+        <li class="page-item" [class.disabled]="currentPage === 1" (click)="loadPage(currentPage-1)">
+            <a class="page-link">Previous</a>
+        </li>
+        <li class="page-item" [class.active]="currentPage-1 === item" *ngFor="let item of pages"
+            (click)="loadPage(item+1)">
+            <a class="page-link">{{item+1}}</a>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage === pages.length" (click)="loadPage(currentPage+1)">
+            <a class="page-link">Next</a>
+        </li>
+    </ul>
+</nav>

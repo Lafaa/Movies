@@ -36,16 +36,8 @@ export class DataBaseService {
     return scores.filter(m => m.score > 0).slice(0, 3);
   }
 
-  getAllMovies() {
+  listAllMovies() {
     return Movies;
-  }
-
-  listAllMovies(): Thumbnail[] {
-    return Movies.map(x => ({
-      id: x.id,
-      img: x.img,
-      name: x.name
-    }));
   }
 
   getBestRated(howMany: number = 3) {

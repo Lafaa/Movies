@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataBaseService } from 'src/app/services/data-base.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-details',
@@ -11,7 +11,7 @@ export class MovieDetailsComponent implements OnInit {
   movie: any = {};
   similiarMovies: any = [];
 
-  constructor(private dataBase: DataBaseService, private route: ActivatedRoute) {
+  constructor(private dataBase: DataBaseService, private route: ActivatedRoute, private router: Router) {
 
   }
 
@@ -19,7 +19,11 @@ export class MovieDetailsComponent implements OnInit {
     this.route.params.subscribe(params => {
       const id = parseInt(params.id, 10);
       this.movie = this.dataBase.getMovieDetails(id);
-      this.similiarMovies = this.dataBase.getSimiliarMovies(id);
+      if (this.movie === undefined) {
+        this.router.navigate(['404']);
+      } else {
+        this.similiarMovies = this.dataBase.getSimiliarMovies(id);
+      }
     });
   }
 

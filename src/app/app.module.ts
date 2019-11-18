@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SeeAllMoviesComponent } from './components/see-all-movies/see-all-movies.component';
 import { BackButtonComponent } from './components/back-button/back-button.component';
+import { HomeButtonComponent } from './components/home-button/home-button.component';
 
 @NgModule({
   declarations: [
@@ -21,11 +23,13 @@ import { BackButtonComponent } from './components/back-button/back-button.compon
     HomeComponent,
     NotFoundComponent,
     SeeAllMoviesComponent,
-    BackButtonComponent
+    BackButtonComponent,
+    HomeButtonComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [DataBaseService],
   bootstrap: [AppComponent]

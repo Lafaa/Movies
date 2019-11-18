@@ -1,5 +1,6 @@
+<app-home-button></app-home-button>
 <app-back-button></app-back-button>
-<div class="movieCard">
+<div class="movieCard" *ngIf="movie">
     <img src="../../../assets/images/movie-covers/{{movie.img}}" alt="{{movie.name}} cover">
     <div class="description">
 
