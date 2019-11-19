@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { DataBaseService } from 'src/app/services/data-base.service';
+import { DataBaseService } from 'src/app/services/database/data-base.service';
 import { GenreType } from '../../model/genreType.model';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { SearchStoreService, SearchState, SearchActionsTypes } from 'src/app/services/search-store/search-store.service';
+
 
 @Component({
   selector: 'app-see-all-movies',
@@ -23,22 +25,30 @@ export class SeeAllMoviesComponent {
   allMovies = [];
   GenreType = GenreType;
 
-  constructor(private dataBase: DataBaseService) {
+  constructor(dataBase: DataBaseService, private searchStore: SearchStoreService) {
     this.allMovies = dataBase.listAllMovies();
     this.searchInputChanged
       .pipe(debounceTime(300), distinctUntilChanged())
       .subscribe(newValue => {
-        this.searchInput = newValue;
-        this.currentPage = 1;
-        this.loadMoviesToShow();
+        searchStore.changeState({ type: SearchActionsTypes.newSearch, value: newValue });
       });
     this.selectedGenreChanged
       .pipe(debounceTime(300), distinctUntilChanged())
       .subscribe(newValue => {
-        this.selectedGenre = newValue;
-        this.currentPage = 1;
-        this.loadMoviesToShow();
+        searchStore.changeState({ type: SearchActionsTypes.newGenre, value: newValue });
       });
+
+    this.searchStore.store.subscribe(() => {
+      this.recoverState();
+    });
+    this.recoverState();
+  }
+
+  recoverState() {
+    const state = this.searchStore.getState();
+    this.searchInput = state.searchText;
+    this.selectedGenre = state.genre;
+    this.currentPage = 1;
     this.loadMoviesToShow();
   }
 
@@ -53,7 +63,6 @@ export class SeeAllMoviesComponent {
     if (this.filteredMovies.length > this.perPage) {
       this.showPages = true;
       this.pages = Array(Math.ceil(this.filteredMovies.length / this.perPage)).fill(0).map((x, i) => i);
-      // TODO: controllare perché escono due pagine
     } else {
       this.showPages = false;
       this.pages = [1];

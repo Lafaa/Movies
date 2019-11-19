@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Thumbnail } from 'src/app/model/thumbnail.model';
-import { DataBaseService } from 'src/app/services/data-base.service';
+import { DataBaseService } from 'src/app/services/database/data-base.service';
+import { SearchStoreService } from 'src/app/services/search-store/search-store.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ import { DataBaseService } from 'src/app/services/data-base.service';
 export class HomeComponent implements OnInit {
   mostAppreciated: Thumbnail[] = [];
 
-  constructor(private dataBase: DataBaseService) {
+  constructor(private dataBase: DataBaseService, private searchStore: SearchStoreService) {
     switch (true) {
       case window.innerWidth >= 1200:
         this.mostAppreciated = dataBase.getBestRated(4);
@@ -25,7 +26,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.searchStore.reset();
   }
 
 }

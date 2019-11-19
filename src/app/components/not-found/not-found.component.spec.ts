@@ -19,19 +19,13 @@ describe('NotFoundComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent,
-        MovieThumbnailComponent,
-        MoviesListComponent,
-        MovieDetailsComponent,
-        HomeComponent,
         NotFoundComponent,
-        SeeAllMoviesComponent,
         BackButtonComponent,
         HomeButtonComponent
       ],
-      imports: [ RouterTestingModule, FormsModule  ]
+      imports: [RouterTestingModule, FormsModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

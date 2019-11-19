@@ -1,5 +1,6 @@
 <app-home-button></app-home-button>
 <app-back-button></app-back-button>
+<h1>All Movies</h1>
 <form class="form-inline">
     <div class="form-group">
         <label>Title</label>
@@ -15,26 +16,7 @@
         </select>
     </div>
 </form>
-<!-- <form class="form-inline">
-    <div class="form-group">
-        <label>Sort By</label>
-        <select name="selectedSort" class="form-control" [ngModel]="selectedSort" (ngModelChange)='changeSort($event)'>
-            <option value="rate">Rate</option>
-            <option value="name">Name</option>
-            <option value="length">Length</option>
-        </select>
 
-    </div>
-    <div class="form-group">
-        <label>Results per Page</label>
-        <select name="selectPerPage" class="form-control" [ngModel]="selectPerPage"
-            (ngModelChange)='changedPerPage($event)'>
-            <option value="4">4</option>
-            <option value="8">8</option>
-            <option value="12">12</option>
-        </select>
-    </div>
-</form> -->
 <app-movies-list [moviesToShow]="moviesToShow"></app-movies-list>
 <nav aria-label="Page navigation example" *ngIf="showPages">
     <ul class="pagination justify-content-center">

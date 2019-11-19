@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import Movies from '../../assets/movie.mock-data.json';
-import { GenreType } from '../model/genreType.model';
-import { Thumbnail } from '../model/thumbnail.model.js';
+import Movies from '../../../assets/movie.mock-data.json';
 
 @Injectable({
   providedIn: 'root'
@@ -18,12 +16,7 @@ export class DataBaseService {
       if (m.id === id) {
         return;
       }
-      scores[m.id] = {
-        id: m.id,
-        img: m.img,
-        name: m.name,
-        score: 0
-      };
+      scores[m.id] = { ...m, score: 0 };
       m.genres.forEach(g => {
         if (genres.includes(g)) {
           scores[m.id].score++;
@@ -48,9 +41,9 @@ export class DataBaseService {
     }).slice(0, howMany);
   }
 
-  listMoviesByGenre(genre: GenreType) {
-    return Movies.filter(movie => movie.genres.includes(genre));
-  }
+  // listMoviesByGenre(genre: GenreType) {
+  //   return Movies.filter(movie => movie.genres.includes(genre));
+  // }
 
   getMovieDetails(id: number) {
     return Movies.filter(x => x.id === id)[0];

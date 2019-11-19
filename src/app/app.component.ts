@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DataBaseService } from './services/data-base.service';
+import { DataBaseService } from './services/database/data-base.service';
 import { GenreType } from './model/genreType.model';
 
 @Component({
