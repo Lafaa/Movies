@@ -13,6 +13,7 @@ import { SeeAllMoviesComponent } from '../see-all-movies/see-all-movies.componen
 import { NotFoundComponent } from '../not-found/not-found.component';
 import { HomeButtonComponent } from '../home-button/home-button.component';
 import { BackButtonComponent } from '../back-button/back-button.component';
+import { AllMoviesButtonComponent } from '../all-movies-button/all-movies-button.component';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -29,7 +30,8 @@ describe('HomeComponent', () => {
         SeeAllMoviesComponent,
         NotFoundComponent,
         HomeButtonComponent,
-        BackButtonComponent
+        BackButtonComponent,
+        AllMoviesButtonComponent
       ],
       imports: [RouterTestingModule.withRoutes(routes), FormsModule]
     })

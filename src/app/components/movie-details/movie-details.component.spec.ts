@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from '../home/home.component';
 import { SeeAllMoviesComponent } from '../see-all-movies/see-all-movies.component';
 import { NotFoundComponent } from '../not-found/not-found.component';
+import { AllMoviesButtonComponent } from '../all-movies-button/all-movies-button.component';
 
 describe('MovieDetailsComponent', () => {
   let component: MovieDetailsComponent;
@@ -25,7 +26,8 @@ describe('MovieDetailsComponent', () => {
         HomeButtonComponent,
         HomeComponent,
         SeeAllMoviesComponent,
-        NotFoundComponent
+        NotFoundComponent,
+        AllMoviesButtonComponent
       ],
       imports: [RouterTestingModule, FormsModule]
     })
@@ -36,7 +38,7 @@ describe('MovieDetailsComponent', () => {
     fixture = TestBed.createComponent(MovieDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  }); 
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();

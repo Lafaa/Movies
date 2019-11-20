@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Thumbnail } from 'src/app/model/thumbnail.model';
 
 @Component({
   selector: 'app-movies-list',
@@ -7,7 +6,7 @@ import { Thumbnail } from 'src/app/model/thumbnail.model';
   styleUrls: ['./movies-list.component.sass']
 })
 export class MoviesListComponent implements OnInit {
-  @Input() moviesToShow: Thumbnail[];
+  @Input() moviesToShow;
 
   constructor() {}
 
