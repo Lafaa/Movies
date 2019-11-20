@@ -19,6 +19,7 @@
 </form>
 
 <app-movies-list [moviesToShow]="moviesToShow"></app-movies-list> <!-- show results-->
+<p class="noResults" *ngIf="moviesToShow.length === 0">No movie found</p>
 
 <!-- Pages links to navigate through the pages-->
 <nav aria-label="Page navigation example" *ngIf="pages.length > 1">
